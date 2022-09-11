@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="450" minWidth="900" prefHeight="450.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cbs.registerPageController">
+   <children>
+      <Label fx:id="registerLabel" layoutX="119.0" layoutY="81.0" prefHeight="41.0" prefWidth="168.0" text="Register (customer)">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <TextField fx:id="firstNameBox" layoutX="119.0" layoutY="122.0" />
+      <TextField fx:id="lastNameBox" layoutX="119.0" layoutY="166.0" />
+      <PasswordField fx:id="passwordBox" layoutX="119.0" layoutY="260.0" />
+      <PasswordField fx:id="confirmPasswordBox" layoutX="119.0" layoutY="309.0" />
+      <Label fx:id="firstNameLabel" layoutX="51.0" layoutY="126.0" text="First name" />
+      <Label fx:id="lastNameLabel" layoutX="51.0" layoutY="170.0" text="Last name" />
+      <Label fx:id="passwordLabel" layoutX="53.0" layoutY="264.0" text="Password" />
+      <TextField fx:id="emailBox" layoutX="119.0" layoutY="213.0" />
+      <Label fx:id="emailLabel" layoutX="64.0" layoutY="217.0" text="Email" />
+      <Label fx:id="confirmPasswordLabel" layoutX="16.0" layoutY="313.0" text="Confirm password" />
+      <Button fx:id="registerButton" layoutX="119.0" layoutY="360.0" mnemonicParsing="false" onAction="#registerButtonClicked" prefHeight="25.0" prefWidth="149.0" text="Go" />
+      <Label fx:id="employeeRegisterLabel" layoutX="34.0" layoutY="409.0" prefHeight="17.0" prefWidth="376.0" text="In order to register as an employee please contact a staff member" textFill="RED" />
+      <Label fx:id="fieldsUnfilled" layoutX="317.0" layoutY="364.0" text="Please fill out all fields" textFill="RED" visible="false" />
+      <Label fx:id="passwordsUnmatched" layoutX="317.0" layoutY="364.0" text="Password and confirm password do not match" textFill="RED" visible="false" />
+      <Button fx:id="backToLogin" layoutX="25.0" layoutY="29.0" mnemonicParsing="false" onAction="#loadLoginPage" text="Back to Login" />
+      <Label fx:id="registeredLabel" layoutX="317.0" layoutY="313.0" prefHeight="17.0" prefWidth="376.0" text="Registered successfully! Please return to the login page and sign in" textFill="#1a8a04" visible="false" />
+      <Label fx:id="invalidEmailFormat" layoutX="303.0" layoutY="364.0" prefHeight="17.0" prefWidth="551.0" text="Please make sure your email is in a valid format (must contain @ and .com)" textFill="RED" visible="false" />
+   </children>
+</AnchorPane>

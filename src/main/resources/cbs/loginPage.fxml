@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="450" minWidth="900" prefHeight="450" prefWidth="900" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cbs.mainController">
+   <children>
+      <TextField fx:id="emailBox" layoutX="96.0" layoutY="117.0" AnchorPane.bottomAnchor="308.0" />
+      <PasswordField fx:id="passwordBox" layoutX="96.0" layoutY="165.0" />
+      <Label fx:id="signIn" layoutX="96.0" layoutY="67.0" prefHeight="36.0" prefWidth="149.0" text="Sign In">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="loginButton" layoutX="96.0" layoutY="213.0" mnemonicParsing="false" onAction="#loginButtonClicked" prefHeight="25.0" prefWidth="149.0" text="Go" />
+      <Label fx:id="failedLogin" layoutX="96.0" layoutY="251.0" prefHeight="25.0" prefWidth="272.0" text="Login failed, username or password incorrect" textFill="RED" visible="false" />
+      <Button fx:id="registerButton" layoutX="96.0" layoutY="378.0" mnemonicParsing="false" onAction="#registerButtonClicked" prefHeight="25.0" prefWidth="149.0" text="Register here" />
+      <Label fx:id="registerHere" layoutX="96.0" layoutY="345.0" text="Don't have an account?" />
+      <Label fx:id="fieldsUnfilled" layoutX="96.0" layoutY="246.0" prefHeight="25.0" prefWidth="272.0" text="Please fill out all the fields" textFill="RED" visible="false" />
+   </children>
+</AnchorPane>
