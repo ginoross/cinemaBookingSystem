@@ -1,12 +1,12 @@
 package cbs;
 
-public class  Employee extends User{
+public class Employee extends User {
 
-    public Employee(String firstName, String lastName,String email, String password) {
-        super(firstName, lastName,email, password);
+    public Employee(String firstName, String lastName, String email, String password) {
+        super(firstName, lastName, email, password);
     }
 
-    public String getType(){
+    public String getType() {
         return "employee";
     }
 

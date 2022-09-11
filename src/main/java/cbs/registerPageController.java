@@ -47,7 +47,7 @@ public class registerPageController {
         }
     }
 
-    public void clearErrorLabels(){
+    public void clearErrorLabels() {
         fieldsUnfilled.setVisible(false);
         passwordsUnmatched.setVisible(false);
         invalidEmailFormat.setVisible(false);

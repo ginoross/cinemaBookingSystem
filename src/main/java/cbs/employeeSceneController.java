@@ -18,11 +18,17 @@ public class employeeSceneController {
     @FXML
     Label employeeViewLabel;
 
-    public void logOutButtonClicked(ActionEvent event) throws IOException{
+    public void logOutButtonClicked(ActionEvent event) throws IOException {
         Main.setCurrentUser(null);
         Main.setEmployeeMode(false);
 
         sceneCreator.createScene("loginPage.fxml");
+
+    }
+
+    public void manageFilmsButtonClicked(ActionEvent event) throws IOException {
+
+        sceneCreator.createScene("manageFilmsPage.fxml");
 
     }
 }

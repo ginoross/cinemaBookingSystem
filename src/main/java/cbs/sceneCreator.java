@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 
 public class sceneCreator {
 
-    public static void createScene(String sceneName) throws IOException{
+    public static void createScene(String sceneName) throws IOException {
 
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(sceneName));
         Main.setRoot(fxmlLoader.load());

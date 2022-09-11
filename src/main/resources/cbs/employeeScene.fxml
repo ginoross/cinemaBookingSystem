@@ -7,5 +7,6 @@
    <children>
       <Button fx:id="logOutButton" layoutX="829.0" layoutY="14.0" mnemonicParsing="false" onAction="#logOutButtonClicked" text="Log out" />
       <Label fx:id="employeeViewLabel" layoutX="20.0" layoutY="18.0" text="Employee View" />
+      <Button fx:id="manageFilmsButton" layoutX="20.0" layoutY="327.0" mnemonicParsing="false" onAction="#manageFilmsButtonClicked" prefHeight="25.0" prefWidth="214.0" text="Manage Films" />
    </children>
 </AnchorPane>

@@ -21,8 +21,10 @@ public class Main extends Application {
     static User currentUser;
     static String selectedFilmTitle = "", selectedDate = "", selectedTime = "";
     static ArrayList<String> selectedSeats;
+
     static HashSet<Employee> employees = new HashSet<Employee>();
     static HashSet<Customer> customers = new HashSet<Customer>();
+
 
     public static void main(String[] args) throws Exception {
 
@@ -42,7 +44,7 @@ public class Main extends Application {
     }
 
     static void retrieveEmployeeData() throws Exception {
-        ResultSet rs = databaseHandler.retrieveData("Select * from User");
+        ResultSet rs = databaseHandler.queryData("Select * from tblUsers");
         while (rs.next()) {
             if (rs.getBoolean(6)) {
                 Main.employees.add(new Employee(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
@@ -52,27 +54,28 @@ public class Main extends Application {
         }
     }
 
-    static void setCurrentUser(User u){
+    static void setCurrentUser(User u) {
         Main.currentUser = u;
 
     }
 
-    static void setEmployeeMode(boolean employeeMode){
+    static void setEmployeeMode(boolean employeeMode) {
         Main.employeeMode = employeeMode;
-        System.out.println("Employee mode: "+Main.employeeMode);
+        System.out.println("Employee mode: " + Main.employeeMode);
     }
 
-    static void setRoot(Parent root){
+    static void setRoot(Parent root) {
         Main.root = root;
     }
 
-    static Parent getRoot(){
+    static Parent getRoot() {
         return root;
     }
 
-    static Stage getStage(){
+    static Stage getStage() {
         return primaryStage;
     }
+
 
     static HashSet<Employee> getEmployeeList() {
         return employees;
@@ -82,33 +85,35 @@ public class Main extends Application {
         return customers;
     }
 
-    static void resetEmployeeList(){
+
+    static void resetEmployeeList() {
         employees.clear();
     }
 
-    static void resetCustomerList(){
+    static void resetCustomerList() {
         customers.clear();
     }
 
-    static Main getMainApplication(){
+    static Main getMainApplication() {
 
         return m;
     }
 
-    static boolean getEmployeeMode(){
+    static boolean getEmployeeMode() {
         return employeeMode;
     }
 
+
     @Override
-    public void start(Stage primaryStage) throws IOException{
-        try{
-            root=FXMLLoader.load(getClass().getResource("loginPage.fxml"));
+    public void start(Stage primaryStage) throws IOException {
+        try {
+            root = FXMLLoader.load(getClass().getResource("loginPage.fxml"));
             Main.primaryStage = primaryStage;
             Scene scene = new Scene(root, 900, 450);
             primaryStage.setTitle("Cinema Booking System");
             primaryStage.setScene(scene);
             primaryStage.show();
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

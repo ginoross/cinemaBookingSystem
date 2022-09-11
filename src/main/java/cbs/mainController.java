@@ -21,7 +21,7 @@ public class mainController {
     Button loginButton, registerButton;
 
     @FXML
-    Label failedLogin, signIn, registerHere, fieldsUnfilled, emailLabel, passwordLabel;
+    Label failedLogin, signIn, registerHere, fieldsUnfilled;
 
     @FXML
     public void loginButtonClicked(ActionEvent event) throws IOException {
@@ -38,9 +38,9 @@ public class mainController {
 
                 Main.setCurrentUser(u);
                 Main.setEmployeeMode(u.getType().equals("employee"));
-                if(Main.getEmployeeMode()){
+                if (Main.getEmployeeMode()) {
                     sceneCreator.createScene("employeeScene.fxml");
-                }else{
+                } else {
                     sceneCreator.createScene("customerScene.fxml");
                 }
             }

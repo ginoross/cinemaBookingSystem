@@ -15,7 +15,7 @@ public class customerSceneController {
     @FXML
     Label customerViewLabel;
 
-    public void logOutButtonClicked(ActionEvent event) throws IOException{
+    public void logOutButtonClicked(ActionEvent event) throws IOException {
         Main.setCurrentUser(null);
         Main.setEmployeeMode(false);
 
