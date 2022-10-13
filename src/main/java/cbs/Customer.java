@@ -4,13 +4,9 @@ public class Customer extends User {
 
     private double accountBalance;
 
-    public Customer(String firstName, String lastName,String email, String password, double accountBalance) {
+    public Customer(String firstName, String lastName,String email, String password) {
         super(firstName, lastName,email, password);
         this.accountBalance = accountBalance;
-    }
-
-    public double getAccountBalance() {
-        return accountBalance;
     }
 
     public void addToAccountBalance(double addAmount) {

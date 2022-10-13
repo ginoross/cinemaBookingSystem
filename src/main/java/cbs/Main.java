@@ -21,11 +21,8 @@ public class Main extends Application {
     static User currentUser;
     static String selectedFilmTitle = "", selectedDate = "", selectedTime = "";
     static ArrayList<String> selectedSeats;
-
     static HashSet<Employee> employees = new HashSet<Employee>();
     static HashSet<Customer> customers = new HashSet<Customer>();
-
-
 
     public static void main(String[] args) throws Exception {
 
@@ -50,7 +47,7 @@ public class Main extends Application {
             if (rs.getBoolean(6)) {
                 Main.employees.add(new Employee(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
             } else {
-                Main.customers.add(new Customer(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), 0.0));
+                Main.customers.add(new Customer(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
             }
         }
     }
@@ -77,17 +74,13 @@ public class Main extends Application {
         return primaryStage;
     }
 
-
     static HashSet<Employee> getEmployeeList() {
         return employees;
     }
 
-
-
     static HashSet<Customer> getCustomerList() {
         return customers;
     }
-
 
     static void resetEmployeeList(){
         employees.clear();
@@ -105,8 +98,6 @@ public class Main extends Application {
     static boolean getEmployeeMode(){
         return employeeMode;
     }
-
-
 
     @Override
     public void start(Stage primaryStage) throws IOException{

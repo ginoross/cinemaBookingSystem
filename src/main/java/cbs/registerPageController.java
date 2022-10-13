@@ -36,7 +36,7 @@ public class registerPageController {
             clearErrorLabels();
             invalidEmailFormat.setVisible(true);
         } else {
-            Main.customers.add(new Customer(firstNameBox.getText(), lastNameBox.getText(), emailBox.getText(), passwordBox.getText(), 0.00));
+            Main.customers.add(new Customer(firstNameBox.getText(), lastNameBox.getText(), emailBox.getText(), passwordBox.getText()));
             clearErrorLabels();
             registeredLabel.setVisible(true);
 

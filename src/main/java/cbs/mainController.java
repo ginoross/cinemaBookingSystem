@@ -21,7 +21,7 @@ public class mainController {
     Button loginButton, registerButton;
 
     @FXML
-    Label failedLogin, signIn, registerHere, fieldsUnfilled;
+    Label failedLogin, signIn, registerHere, fieldsUnfilled, emailLabel, passwordLabel;
 
     @FXML
     public void loginButtonClicked(ActionEvent event) throws IOException {
