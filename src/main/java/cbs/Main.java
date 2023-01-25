@@ -24,6 +24,8 @@ public class Main extends Application {
 
     static HashSet<Employee> employees = new HashSet<Employee>();
     static HashSet<Customer> customers = new HashSet<Customer>();
+    static HashSet<Film> films = new HashSet<Film>();
+
 
 
     public static void main(String[] args) throws Exception {
@@ -31,12 +33,19 @@ public class Main extends Application {
         m = new Main();
 
         retrieveEmployeeData();
+        retrieveFilmData();
+
 
         for (Employee employee : employees) {
             System.out.println(employee.toString());
         }
         for (Customer customer : customers) {
             System.out.println(customer.toString());
+        }
+
+
+        for (Film film : films) {
+            System.out.println(film.toString());
         }
 
         launch(args);
@@ -52,6 +61,23 @@ public class Main extends Application {
                 Main.customers.add(new Customer(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
             }
         }
+    }
+
+    static void retrieveFilmData() throws Exception {
+        ResultSet rs = databaseHandler.queryData("Select * from tblFilms");
+        int i=2;
+        while(rs.next()){
+            System.out.println(rs.getString(i));
+            i++;
+
+
+        }
+        while(rs.next()){
+            Main.films.add(new Film(rs.getString(2), (rs.getDate(3)).toLocalDate(), (rs.getDate(4)).toLocalDate(), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(5), rs.getString(6), rs.getString(7)));
+        }
+
+
+
     }
 
     static void setCurrentUser(User u) {

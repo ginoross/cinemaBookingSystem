@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="450.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cbs.manageFilmsPageController">
+    <children>
+        <Button fx:id="backButton" layoutX="827.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonClicked" text="Back" />
+      <TextField fx:id="filmNameBox" layoutX="119.0" layoutY="63.0" prefHeight="25.0" prefWidth="177.0" />
+      <Label fx:id="filmNameLabel" layoutX="39.0" layoutY="67.0" text="Film Name" />
+      <Label fx:id="addFilmLabel" layoutX="135.0" layoutY="27.0" text="Add a Film">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="startDatePicker" layoutX="120.0" layoutY="105.0" prefHeight="25.0" prefWidth="177.0" />
+      <Label fx:id="startDateLabel" layoutX="41.0" layoutY="112.0" prefHeight="17.0" prefWidth="53.0" text="Start Date" />
+      <DatePicker fx:id="endDatePicker" layoutX="119.0" layoutY="149.0" prefHeight="25.0" prefWidth="177.0" />
+      <Label fx:id="endDateLabel" layoutX="43.0" layoutY="155.0" prefHeight="17.0" prefWidth="49.0" text="End Date" />
+      <Label fx:id="screeningLabel1" layoutX="23.0" layoutY="198.0" prefHeight="17.0" prefWidth="89.0" text="Screening time 1" />
+      <Label fx:id="screeningLabel2" layoutX="23.0" layoutY="233.0" prefHeight="25.0" prefWidth="89.0" text="Screening time 2" />
+      <Label fx:id="screeningLabel3" layoutX="23.0" layoutY="275.0" prefHeight="25.0" prefWidth="89.0" text="Screening time 3" />
+      <TextField fx:id="filmTrailerBox" layoutX="119.0" layoutY="313.0" prefHeight="25.0" prefWidth="177.0" />
+      <Label fx:id="filmTrailerLabel" layoutX="43.0" layoutY="312.0" prefHeight="25.0" prefWidth="59.0" text="Film Trailer" />
+      <ComboBox fx:id="screeningBox1" layoutX="119.0" layoutY="192.0" prefHeight="25.0" prefWidth="177.0" />
+      <ComboBox fx:id="screeningBox2" layoutX="120.0" layoutY="233.0" prefHeight="25.0" prefWidth="177.0" />
+      <ComboBox fx:id="screeningBox3" layoutX="119.0" layoutY="273.0" prefHeight="25.0" prefWidth="177.0" />
+      <Button fx:id="uploadImageButton" layoutX="342.0" layoutY="344.0" mnemonicParsing="false" onAction="#uploadImageClicked" prefHeight="25.0" prefWidth="200.0" text="Upload Image" />
+      <ImageView fx:id="filmPoster" fitHeight="300.0" fitWidth="200.0" focusTraversable="true" layoutX="342.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+         <effect>
+            <InnerShadow />
+         </effect>
+         <image>
+            <Image url="@filmPosters/defaultPoster.png" />
+         </image></ImageView>
+      <TextArea fx:id="filmDescriptionArea" layoutX="119.0" layoutY="350.0" prefHeight="86.0" prefWidth="177.0" />
+      <Button fx:id="addFilmButton" layoutX="342.0" layoutY="381.0" mnemonicParsing="false" onAction="#addFilmButtonClicked" prefHeight="25.0" prefWidth="200.0" text="Add Film" />
+      <Label layoutX="30.0" layoutY="385.0" text="Film Description" />
+      <Label fx:id="fieldsUnfilled" layoutX="391.0" layoutY="419.0" text="Please fill out all fields" textFill="RED" visible="false" />
+    </children>
+</AnchorPane>
