@@ -59,8 +59,6 @@ public class manageFilmsPageController {
 
 
     public void backButtonClicked(ActionEvent event) throws IOException {
-        Main.setCurrentUser(null);
-        Main.setEmployeeMode(false);
 
         sceneCreator.createScene("employeeScene.fxml");
 
@@ -94,7 +92,7 @@ public class manageFilmsPageController {
         }
     }
 
-    public void addFilmButtonClicked(ActionEvent event) throws IOException {
+    public void addFilmButtonClicked(ActionEvent event) throws Exception {
 
         if (filmNameBox.getLength() == 0 || (startDatePicker.getValue()) == null || (endDatePicker.getValue()) == null || (screeningBox1.getValue() == null) || (screeningBox2.getValue() == null) || (screeningBox3.getValue() == null) || (filmTrailerBox.getLength() == 0) || (selectedImage == null)) {
             clearErrors();
@@ -112,10 +110,11 @@ public class manageFilmsPageController {
                     return;
                 }
             }
-            Main.films.add(new Film(filmNameBox.getText(), startDatePicker.getValue(), endDatePicker.getValue(), screeningBox1.getValue(), screeningBox2.getValue(), screeningBox3.getValue(), filmTrailerBox.getText(), filmDescriptionArea.getText(), filmNameBox.getText() + ".png"));
+            Main.films.add(new Film(filmNameBox.getText(), startDatePicker.getValue(), endDatePicker.getValue(), screeningBox1.getValue(), screeningBox2.getValue(), screeningBox3.getValue(), filmTrailerBox.getText(), filmDescriptionArea.getText(), filmNameBox.getText() + "Poster.png"));
             for (Film film : Main.films) {
                 System.out.println(film.toString());
             }
+            databaseHandler.addFilmRecord(filmNameBox.getText(), startDatePicker.getValue(), endDatePicker.getValue(), screeningBox1.getValue(), screeningBox2.getValue(), screeningBox3.getValue(), filmTrailerBox.getText(), filmDescriptionArea.getText(), filmNameBox.getText() + "Poster.png");
             clearBoxes();
 
 

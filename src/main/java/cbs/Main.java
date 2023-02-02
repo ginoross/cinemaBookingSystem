@@ -65,13 +65,6 @@ public class Main extends Application {
 
     static void retrieveFilmData() throws Exception {
         ResultSet rs = databaseHandler.queryData("Select * from tblFilms");
-        int i=2;
-        while(rs.next()){
-            System.out.println(rs.getString(i));
-            i++;
-
-
-        }
         while(rs.next()){
             Main.films.add(new Film(rs.getString(2), (rs.getDate(3)).toLocalDate(), (rs.getDate(4)).toLocalDate(), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(5), rs.getString(6), rs.getString(7)));
         }
