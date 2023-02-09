@@ -3,8 +3,10 @@ package cbs;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
 import java.io.File;
@@ -26,6 +28,9 @@ public class viewFilmsPageController implements Initializable {
     @FXML
     ScrollPane scrollPane;
 
+    @FXML
+    GridPane grid;
+
     public void initialize(URL location, ResourceBundle resources){
         try{
             String path = URLDecoder.decode("src/main/resources/cbs/filmPosters/", StandardCharsets.UTF_8);
@@ -34,8 +39,12 @@ public class viewFilmsPageController implements Initializable {
             for(File file: folder.listFiles()){
                 fileList.add(file);
             }
+            grid.setPadding(new Insets(7,7,7,7));
 
-            scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+            grid.setHgap(10);
+            grid.setVgap(10);
+
+            grid.setGridLinesVisible(true);
         }catch (Exception e){
             e.printStackTrace();
         }

@@ -8,7 +8,7 @@
         <Button fx:id="backButton" layoutX="827.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonClicked" text="Back" />
       <ScrollPane layoutX="25" layoutY="50.0" prefHeight="350" prefWidth="850.0">
          <content>
-
+             <AnchorPane prefHeight="350" prefWidth="850.0" />
          </content>
       </ScrollPane>
     </children>
