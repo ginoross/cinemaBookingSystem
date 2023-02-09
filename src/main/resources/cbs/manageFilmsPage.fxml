@@ -34,7 +34,7 @@
             <InnerShadow />
          </effect>
          <image>
-            <Image url="@filmPosters/defaultPoster.png" />
+            <Image url="@defaultPoster.png" />
          </image></ImageView>
       <TextArea fx:id="filmDescriptionArea" layoutX="119.0" layoutY="350.0" prefHeight="86.0" prefWidth="177.0" />
       <Button fx:id="addFilmButton" layoutX="342.0" layoutY="381.0" mnemonicParsing="false" onAction="#addFilmButtonClicked" prefHeight="25.0" prefWidth="200.0" text="Add Film" />
