@@ -5,7 +5,7 @@ import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 
-public class sceneCreator {
+public class SceneCreator {
 
     public static void createScene(String sceneName) throws IOException {
 

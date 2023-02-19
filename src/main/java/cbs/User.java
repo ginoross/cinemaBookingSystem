@@ -3,12 +3,16 @@ package cbs;
 public class User {
 
     protected String firstName, lastName, email, password;
+    protected boolean isEmployee;
+    protected int ID;
 
-    public User(String firstName, String lastName, String email, String password) {
+    public User(String firstName, String lastName, String email, String password, boolean isEmployee, int id) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.isEmployee = isEmployee;
+        this.ID = id;
     }
 
     public String getFirstName() {
@@ -41,6 +45,22 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean getIsEmployee() {
+        return isEmployee;
+    }
+
+    public void setEmployee(boolean employee) {
+        isEmployee = employee;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public String getType() {

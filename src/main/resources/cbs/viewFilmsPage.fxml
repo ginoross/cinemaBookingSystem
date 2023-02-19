@@ -2,14 +2,24 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="450.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cbs.viewFilmsPageController">
+<AnchorPane prefHeight="450.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cbs.ViewFilmsPageController">
     <children>
         <Button fx:id="backButton" layoutX="827.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonClicked" text="Back" />
-      <ScrollPane layoutX="25" layoutY="50.0" prefHeight="350" prefWidth="850.0">
+      <ScrollPane fx:id="scrollPane" layoutX="25" layoutY="50.0" prefHeight="350" prefWidth="850.0">
          <content>
-             <AnchorPane prefHeight="350" prefWidth="850.0" />
+             <AnchorPane prefHeight="350" prefWidth="850.0">
+                 <children>
+                     <GridPane fx:id="grid" layoutX="2.0" prefHeight="367.0" prefWidth="683.0" />
+                 </children>
+             </AnchorPane>
          </content>
       </ScrollPane>
+      <Label layoutX="25.0" layoutY="12.0" text="Select Film">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

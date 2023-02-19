@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="450" minWidth="900" prefHeight="450.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cbs.registerPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="450" minWidth="900" prefHeight="450.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cbs.RegisterPageController">
    <children>
       <Label fx:id="registerLabel" layoutX="119.0" layoutY="81.0" prefHeight="41.0" prefWidth="168.0" text="Register (customer)">
          <font>

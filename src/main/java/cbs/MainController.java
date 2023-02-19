@@ -8,9 +8,10 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
-public class mainController {
+public class MainController {
     @FXML
     TextField emailBox;
 
@@ -24,24 +25,24 @@ public class mainController {
     Label failedLogin, signIn, registerHere, fieldsUnfilled;
 
     @FXML
-    public void loginButtonClicked(ActionEvent event) throws IOException {
+    public void loginButtonClicked(ActionEvent event) throws IOException, NoSuchAlgorithmException {
         ArrayList<User> users = new ArrayList<User>();
         users.addAll(Main.getCustomerList());
         users.addAll(Main.getEmployeeList());
 
         boolean loggedIn = false;
         for (User u : users) {
-            if (emailBox.getText().equals(u.getEmail()) && passwordBox.getText().equals(u.getPassword())) {
+            if (emailBox.getText().equals(u.getEmail()) && SHA256.toHexString(SHA256.getSHABytes(passwordBox.getText())).equals(u.getPassword())) {
                 System.out.println("login success");
                 loggedIn = true;
                 failedLogin.setVisible(false);
 
                 Main.setCurrentUser(u);
-                Main.setEmployeeMode(u.getType().equals("employee"));
+                Main.setEmployeeMode(u.getIsEmployee());
                 if (Main.getEmployeeMode()) {
-                    sceneCreator.createScene("employeeScene.fxml");
+                    SceneCreator.createScene("employeeScene.fxml");
                 } else {
-                    sceneCreator.createScene("customerScene.fxml");
+                    SceneCreator.createScene("customerScene.fxml");
                 }
             }
         }
@@ -62,6 +63,6 @@ public class mainController {
 
     @FXML
     public void registerButtonClicked(ActionEvent event) throws IOException {
-        sceneCreator.createScene("registerPage.fxml");
+        SceneCreator.createScene("registerPage.fxml");
     }
 }

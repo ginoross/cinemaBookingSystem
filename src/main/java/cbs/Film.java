@@ -8,8 +8,9 @@ public class Film {
     protected String filmTitle;
     protected LocalDate startDate, endDate;
     protected String screening1, screening2, screening3, filmTrailer, filmDescription, filmPoster;
+    protected int filmIndex;
 
-    public Film(String filmTitle, LocalDate startDate, LocalDate endDate, String screening1, String screening2, String screening3, String filmTrailer, String filmDescription, String filmPoster) {
+    public Film(String filmTitle, LocalDate startDate, LocalDate endDate, String screening1, String screening2, String screening3, String filmTrailer, String filmDescription, String filmPoster, int filmIndex) {
         this.filmTitle = filmTitle;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -19,6 +20,7 @@ public class Film {
         this.filmTrailer = filmTrailer;
         this.filmDescription = filmDescription;
         this.filmPoster = filmPoster;
+        this.filmIndex = filmIndex;
 
     }
 
@@ -94,6 +96,14 @@ public class Film {
         this.filmPoster = filmPoster;
     }
 
+    public int getFilmIndex() {
+        return filmIndex;
+    }
+
+    public void setFilmIndex(String filmIndex) {
+        this.filmPoster = filmIndex;
+    }
+
     @Override
     public String toString() {
         return "Film{" +
@@ -106,6 +116,7 @@ public class Film {
                 ", filmTrailer='" + filmTrailer + '\'' +
                 ", filmDescription='" + filmDescription + '\'' +
                 ", filmPoster='" + filmPoster + '\'' +
+                ", filmIndex='" + filmIndex + '\'' +
                 '}';
     }
 }

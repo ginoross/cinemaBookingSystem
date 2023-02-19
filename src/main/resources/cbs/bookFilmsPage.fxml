@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="450.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cbs.BookFilmsPageController">
+    <Button fx:id="backButton" layoutX="827.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonClicked" text="Back" />
+   <Label fx:id="bookingTitleLabel" layoutX="43.0" layoutY="31.0" prefHeight="30.0" prefWidth="341.0" text="bookingTitleLabel">
+      <font>
+         <Font size="20.0" />
+      </font>
+   </Label>
+   <Label layoutX="572.0" layoutY="15.0" prefHeight="19.0" prefWidth="58.0" text="Seat Picker" />
+   <Rectangle fx:id="B1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" layoutX="500.0" layoutY="100.0" onMouseClicked="#seatSelected" stroke="BLACK" strokeType="INSIDE" width="41.0" />
+    <Rectangle fx:id="C1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" layoutX="550.0" layoutY="100.0" onMouseClicked="#seatSelected" stroke="BLACK" strokeType="INSIDE" width="41.0" />
+    <Rectangle fx:id="D1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" layoutX="600.0" layoutY="100.0" onMouseClicked="#seatSelected" stroke="BLACK" strokeType="INSIDE" width="41.0" />
+    <Rectangle fx:id="E1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" layoutX="650.0" layoutY="100.0" onMouseClicked="#seatSelected" stroke="BLACK" strokeType="INSIDE" width="41.0" />
+    <Rectangle fx:id="A2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" layoutX="450.0" layoutY="150.0" onMouseClicked="#seatSelected" stroke="BLACK" strokeType="INSIDE" width="41.0" />
+    <Rectangle fx:id="B2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" layoutX="500.0" layoutY="150.0" onMouseClicked="#seatSelected" stroke="BLACK" strokeType="INSIDE" width="41.0" />
+    <Rectangle fx:id="C2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" layoutX="550.0" layoutY="150.0" onMouseClicked="#seatSelected" stroke="BLACK" strokeType="INSIDE" width="41.0" />
+    <Rectangle fx:id="D2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" layoutX="600.0" layoutY="150.0" onMouseClicked="#seatSelected" stroke="BLACK" strokeType="INSIDE" width="41.0" />
+    <Rectangle fx:id="E2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" layoutX="650.0" layoutY="150.0" onMouseClicked="#seatSelected" stroke="BLACK" strokeType="INSIDE" width="41.0" />
+    <Rectangle fx:id="F2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" layoutX="700.0" layoutY="150.0" onMouseClicked="#seatSelected" stroke="BLACK" strokeType="INSIDE" width="41.0" />
+    <Rectangle fx:id="A3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" layoutX="450.0" layoutY="200.0" onMouseClicked="#seatSelected" stroke="BLACK" strokeType="INSIDE" width="41.0" />
+    <Rectangle fx:id="B3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" layoutX="500.0" layoutY="200.0" onMouseClicked="#seatSelected" stroke="BLACK" strokeType="INSIDE" width="41.0" />
+    <Rectangle fx:id="C3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" layoutX="550.0" layoutY="200.0" onMouseClicked="#seatSelected" stroke="BLACK" strokeType="INSIDE" width="41.0" />
+    <Rectangle fx:id="D3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" layoutX="600.0" layoutY="200.0" onMouseClicked="#seatSelected" stroke="BLACK" strokeType="INSIDE" width="41.0" />
+    <Rectangle fx:id="E3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" layoutX="650.0" layoutY="200.0" onMouseClicked="#seatSelected" stroke="BLACK" strokeType="INSIDE" width="41.0" />
+    <Rectangle fx:id="F3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" layoutX="700.0" layoutY="200.0" onMouseClicked="#seatSelected" stroke="BLACK" strokeType="INSIDE" width="41.0" />
+   <Label layoutX="467.0" layoutY="69.0" prefHeight="17.0" prefWidth="19.0" text="A" />
+    <Label layoutX="517.0" layoutY="69.0" prefHeight="17.0" prefWidth="19.0" text="B" />
+    <Label layoutX="567.0" layoutY="69.0" prefHeight="17.0" prefWidth="19.0" text="C" />
+    <Label layoutX="617.0" layoutY="69.0" prefHeight="17.0" prefWidth="19.0" text="D" />
+    <Label layoutX="667.0" layoutY="69.0" prefHeight="17.0" prefWidth="19.0" text="E" />
+    <Label layoutX="717.0" layoutY="69.0" prefHeight="17.0" prefWidth="19.0" text="F" />
+    <Label layoutX="417.0" layoutY="119.0" prefHeight="17.0" prefWidth="19.0" text="1" />
+    <Label layoutX="417.0" layoutY="169.0" prefHeight="17.0" prefWidth="19.0" text="2" />
+    <Label layoutX="417.0" layoutY="219.0" prefHeight="17.0" prefWidth="19.0" text="3" />
+   <Label fx:id="bookingDateLabel" layoutX="14.0" layoutY="111.0" text="Booking Date" />
+   <DatePicker fx:id="bookingDatePicker" layoutX="97.0" layoutY="108.0" onAction="#updateBookedSeats" />
+   <ComboBox fx:id="bookingTimeComboBox" layoutX="97.0" layoutY="150.0" onAction="#updateBookedSeats" prefHeight="25.0" prefWidth="174.0" />
+   <Label fx:id="bookingTimeLabel" layoutX="14.0" layoutY="154.0" text="Booking Time" />
+   <Label layoutX="453.0" layoutY="263.0" prefHeight="17.0" prefWidth="201.0" text="■ - Available" textFill="#0073ff" />
+    <Label layoutX="453.0" layoutY="280.0" prefHeight="17.0" prefWidth="201.0" text="■ - Booked" textFill="#727272" />
+    <Label layoutX="453.0" layoutY="297.0" prefHeight="17.0" prefWidth="201.0" text="■ - Selected" textFill="RED" />
+   <Button fx:id="confirmBookingButton" layoutX="628.0" layoutY="276.0" mnemonicParsing="false" onAction="#confirmBooking" prefHeight="30.0" prefWidth="115.0" text="Confirm Booking" />
+
+</AnchorPane>

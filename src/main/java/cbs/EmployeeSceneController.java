@@ -4,13 +4,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
-public class employeeSceneController {
+public class EmployeeSceneController {
 
     @FXML
     Button logOutButton;
@@ -22,13 +19,19 @@ public class employeeSceneController {
         Main.setCurrentUser(null);
         Main.setEmployeeMode(false);
 
-        sceneCreator.createScene("loginPage.fxml");
+        SceneCreator.createScene("loginPage.fxml");
 
     }
 
-    public void manageFilmsButtonClicked(ActionEvent event) throws IOException {
+    public void manageFilmsButtonClicked() throws IOException {
 
-        sceneCreator.createScene("manageFilmsPage.fxml");
+        SceneCreator.createScene("manageFilmsPage.fxml");
+
+    }
+
+    public void manageUsersButtonClicked() throws IOException {
+
+        SceneCreator.createScene("viewUsersPage.fxml");
 
     }
 }

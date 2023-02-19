@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="450.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cbs.manageFilmsPageController">
+<AnchorPane prefHeight="450.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cbs.ManageFilmsPageController">
     <children>
         <Button fx:id="backButton" layoutX="827.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonClicked" text="Back" />
       <TextField fx:id="filmNameBox" layoutX="119.0" layoutY="63.0" prefHeight="25.0" prefWidth="177.0" />

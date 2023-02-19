@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="450" minWidth="900" prefHeight="450" prefWidth="900" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cbs.mainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="450" minWidth="900" prefHeight="450" prefWidth="900" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cbs.MainController">
    <children>
       <TextField fx:id="emailBox" layoutX="96.0" layoutY="117.0" AnchorPane.bottomAnchor="308.0" />
       <PasswordField fx:id="passwordBox" layoutX="96.0" layoutY="165.0" />

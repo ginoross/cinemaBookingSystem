@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="450.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cbs.ViewBookingsController">
+    <Button fx:id="backButton" layoutX="827.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonClicked" text="Back" />
+   <TableView fx:id="table" layoutX="107.0" layoutY="39.0" prefHeight="356.0" prefWidth="686.0">
+     <columns>
+         <TableColumn fx:id="bookingID" prefWidth="108.0" text="Booking ID" />
+         <TableColumn fx:id="filmID" prefWidth="132.0" text="Film Name" />
+         <TableColumn fx:id="bookingDate" prefWidth="115.0" text="Date" />
+         <TableColumn fx:id="bookingTime" prefWidth="83.0" text="Time" />
+         <TableColumn fx:id="bookingSeat" prefWidth="132.0" text="Seat" />
+         <TableColumn fx:id="isCancelled" prefWidth="115.0" text="Cancelled" />
+     </columns>
+   </TableView>
+    <Button fx:id="cancelBookingButton" layoutX="108.0" layoutY="405.0" mnemonicParsing="false" onAction="#cancelBooking" prefHeight="31.0" prefWidth="686.0" text="Cancel Selected Booking" />
+
+</AnchorPane>

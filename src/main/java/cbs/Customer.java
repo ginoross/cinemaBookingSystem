@@ -2,12 +2,12 @@ package cbs;
 
 public class Customer extends User {
 
-    public Customer(String firstName, String lastName, String email, String password) {
-        super(firstName, lastName, email, password);
+    public Customer(String firstName, String lastName, String email, String password, boolean isEmployee, int ID) {
+        super(firstName, lastName, email, password, isEmployee, ID);
     }
 
-    public String getType() {
-        return "customer";
+    public boolean getIsEmployee() {
+        return isEmployee;
     }
 
     @Override

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="450.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cbs.SelectedFilmPageController">
+    <Button fx:id="backButton" layoutX="827.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonClicked" text="Back" />
+   <ImageView fx:id="selectedFilmPoster" fitHeight="372.0" fitWidth="269.0" layoutX="45.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" />
+   <Label fx:id="filmTitleLabel" layoutX="364.0" layoutY="31.0" prefHeight="40.0" prefWidth="183.0" text="Label">
+      <font>
+         <Font size="25.0" />
+      </font>
+   </Label>
+   <Label fx:id="startDateLabel" layoutX="364.0" layoutY="292.0" prefHeight="25.0" prefWidth="215.0" text="Label">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </Label>
+   <Label fx:id="endDateLabel" layoutX="364.0" layoutY="329.0" prefHeight="25.0" prefWidth="215.0" text="Label">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </Label>
+   <Label fx:id="screeningTimesLabel" layoutX="364.0" layoutY="366.0" prefHeight="25.0" prefWidth="349.0" text="Label">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </Label>
+   <Button fx:id="deleteFilmButton" layoutX="801.0" layoutY="354.0" mnemonicParsing="false" onAction="#deleteFilm" prefHeight="40.0" prefWidth="78.0" text="Delete Film" visible="false" />
+   <Button fx:id="bookFilmButton" layoutX="801.0" layoutY="354.0" mnemonicParsing="false" onAction="#bookFilm" prefHeight="40.0" prefWidth="78.0" text="Book Film" visible="false" />
+   <TextArea fx:id="filmDescriptionTextArea" layoutX="356.0" layoutY="102.0" prefHeight="76.0" prefWidth="512.0" />
+   <Hyperlink fx:id="filmTrailerLink" layoutX="354.0" layoutY="250.0" prefHeight="33.0" prefWidth="482.0" text="Hyperlink">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </Hyperlink>
+
+</AnchorPane>

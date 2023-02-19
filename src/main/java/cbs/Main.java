@@ -6,11 +6,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.sql.*;
-
-import java.io.*;
-import java.util.ArrayList;
+import java.sql.ResultSet;
 import java.util.HashSet;
+import java.util.Objects;
 
 public class Main extends Application {
 
@@ -19,13 +17,12 @@ public class Main extends Application {
     static Main m = null;
     static Boolean employeeMode;
     static User currentUser;
-    static String selectedFilmTitle = "", selectedDate = "", selectedTime = "";
-    static ArrayList<String> selectedSeats;
+    static String selectedFilmTitle = "";
 
-    static HashSet<Employee> employees = new HashSet<Employee>();
-    static HashSet<Customer> customers = new HashSet<Customer>();
-    static HashSet<Film> films = new HashSet<Film>();
-
+    static HashSet<Employee> employees = new HashSet<>();
+    static HashSet<Customer> customers = new HashSet<>();
+    static HashSet<Film> films = new HashSet<>();
+    static HashSet<Booking> bookings = new HashSet<>();
 
 
     public static void main(String[] args) throws Exception {
@@ -34,43 +31,36 @@ public class Main extends Application {
 
         retrieveEmployeeData();
         retrieveFilmData();
-
-
-        for (Employee employee : employees) {
-            System.out.println(employee.toString());
-        }
-        for (Customer customer : customers) {
-            System.out.println(customer.toString());
-        }
-
-
-        for (Film film : films) {
-            System.out.println(film.toString());
-        }
+        retrieveBookingData();
 
         launch(args);
 
     }
 
     static void retrieveEmployeeData() throws Exception {
-        ResultSet rs = databaseHandler.queryData("Select * from tblUsers");
+        ResultSet rs = DatabaseHandler.queryData("Select * from tblUsers");
         while (rs.next()) {
             if (rs.getBoolean(6)) {
-                Main.employees.add(new Employee(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+                Main.employees.add(new Employee(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), true,  rs.getInt(1)));
             } else {
-                Main.customers.add(new Customer(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+                Main.customers.add(new Customer(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), false,  rs.getInt(1)));
             }
         }
     }
 
     static void retrieveFilmData() throws Exception {
-        ResultSet rs = databaseHandler.queryData("Select * from tblFilms");
-        while(rs.next()){
-            Main.films.add(new Film(rs.getString(2), (rs.getDate(3)).toLocalDate(), (rs.getDate(4)).toLocalDate(), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(5), rs.getString(6), rs.getString(7)));
+        ResultSet rs = DatabaseHandler.queryData("Select * from tblFilms");
+        while (rs.next()) {
+            Main.films.add(new Film(rs.getString(2), (rs.getDate(3)).toLocalDate(), (rs.getDate(4)).toLocalDate(), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getInt(1)));
         }
+    }
 
-
-
+    static void retrieveBookingData() throws Exception {
+        ResultSet rs = DatabaseHandler.queryData("Select * from tblBookings");
+        while (rs.next()) {
+            System.out.println(rs.getString(5) + rs.getString(6) + rs.getString(7));
+            Main.bookings.add(new Booking(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getDate(4).toLocalDate(), rs.getString(7), rs.getString(5), rs.getBoolean(6)));
+        }
     }
 
     static void setCurrentUser(User u) {
@@ -81,6 +71,10 @@ public class Main extends Application {
     static void setEmployeeMode(boolean employeeMode) {
         Main.employeeMode = employeeMode;
         System.out.println("Employee mode: " + Main.employeeMode);
+    }
+
+    static void setSelectedFilmTitle(String selectedFilmTitle) {
+        Main.selectedFilmTitle = selectedFilmTitle;
     }
 
     static void setRoot(Parent root) {
@@ -104,19 +98,15 @@ public class Main extends Application {
         return customers;
     }
 
-
-    static void resetEmployeeList() {
-        employees.clear();
+    static Film getSelectedFilm(String selectedFilmTitle) {
+        for (Film film : films) {
+            if (film.filmTitle.equals(selectedFilmTitle)) {
+                return film;
+            }
+        }
+        return null;
     }
 
-    static void resetCustomerList() {
-        customers.clear();
-    }
-
-    static Main getMainApplication() {
-
-        return m;
-    }
 
     static boolean getEmployeeMode() {
         return employeeMode;
@@ -124,13 +114,14 @@ public class Main extends Application {
 
 
     @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void start(Stage primaryStage) {
         try {
-            root = FXMLLoader.load(getClass().getResource("loginPage.fxml"));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("loginPage.fxml")));
             Main.primaryStage = primaryStage;
             Scene scene = new Scene(root, 900, 450);
             primaryStage.setTitle("Cinema Booking System");
             primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
             primaryStage.show();
         } catch (Exception e) {
             e.printStackTrace();

@@ -2,14 +2,14 @@ package cbs;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.io.IOException;
+import java.sql.ResultSet;
 
-public class registerPageController {
+public class RegisterPageController {
+
+    protected int customerID;
 
     @FXML
     Label registerLabel, firstNameLabel, lastNameLabel, emailLabel, passwordLabel, confirmPasswordLabel, employeeRegisterLabel, fieldsUnfilled, passwordsUnmatched, registeredLabel, invalidEmailFormat;
@@ -36,11 +36,25 @@ public class registerPageController {
             clearErrorLabels();
             invalidEmailFormat.setVisible(true);
         } else {
-            Main.customers.add(new Customer(firstNameBox.getText(), lastNameBox.getText(), emailBox.getText(), passwordBox.getText()));
+            DatabaseHandler.addUserRecord(firstNameBox.getText(), lastNameBox.getText(), emailBox.getText(), SHA256.toHexString(SHA256.getSHABytes(passwordBox.getText())));
+            try {
+                ResultSet rs = DatabaseHandler.queryData("SELECT UserID, email FROM tblUsers WHERE email = '" + emailBox.getText() + "'");
+                if (rs.next()) {
+                    customerID = rs.getInt(1);
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Error updating database. Please restart program", ButtonType.OK);
+                    alert.showAndWait();
+                }
+
+                Main.customers.add(new Customer(firstNameBox.getText(), lastNameBox.getText(), emailBox.getText(), SHA256.toHexString(SHA256.getSHABytes(passwordBox.getText())),false, customerID));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
             clearErrorLabels();
             registeredLabel.setVisible(true);
 
-            databaseHandler.addUserRecord(firstNameBox.getText(), lastNameBox.getText(), emailBox.getText(), passwordBox.getText());
 
             clearBoxes();
 
@@ -55,7 +69,7 @@ public class registerPageController {
     }
 
     public void loadLoginPage(ActionEvent event) throws IOException {
-        sceneCreator.createScene("loginPage.fxml");
+        SceneCreator.createScene("loginPage.fxml");
     }
 
     public void clearBoxes() {

@@ -2,24 +2,26 @@ package cbs;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
-import javafx.embed.swing.SwingFXUtils;
 
 import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.FileAlreadyExistsException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.sql.ResultSet;
 
-import java.awt.image.BufferedImage;
-import java.io.*;
-import java.nio.file.*;
-
-public class manageFilmsPageController {
+public class ManageFilmsPageController {
 
     private File selectedImage;
+    private int filmID;
 
 
     @FXML
@@ -45,7 +47,7 @@ public class manageFilmsPageController {
 
 
     @FXML
-    void initialize() throws IOException {
+    void initialize() {
 
         ObservableList<String> screeningTimes = FXCollections.observableArrayList("13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00");
         screeningBox1.setItems(screeningTimes);
@@ -58,33 +60,30 @@ public class manageFilmsPageController {
     }
 
 
-    public void backButtonClicked(ActionEvent event) throws IOException {
+    public void backButtonClicked() throws IOException {
 
-        sceneCreator.createScene("employeeScene.fxml");
-
-    }
-
-    public void viewFilmsButtonClicked(ActionEvent event) throws IOException {
-
-        sceneCreator.createScene("viewFilmsPage.fxml");
+        SceneCreator.createScene("employeeScene.fxml");
 
     }
 
-    public void uploadImageClicked(ActionEvent event) throws IOException {
+    public void viewFilmsButtonClicked() throws IOException {
+
+        SceneCreator.createScene("viewFilmsPage.fxml");
+
+    }
+
+    public void uploadImageClicked() throws IOException {
 
         try {
             FileChooser fc = new FileChooser();
             selectedImage = fc.showOpenDialog(null);
-            if (selectedImage == null)
-                return;
-            else if (ImageIO.read(selectedImage) == null) {
+            if (selectedImage == null) {
+            } else if (ImageIO.read(selectedImage) == null) {
                 Alert alert = new Alert(Alert.AlertType.WARNING, "Please make sure your image is PNG or JPG format", ButtonType.OK);
                 alert.showAndWait();
-                if (alert.getResult() == ButtonType.OK) {
-                    return;
-                }
+                alert.getResult();
             } else {
-                Image img = SwingFXUtils.toFXImage(ImageIO.read(selectedImage), null);
+                Image img = new Image(selectedImage.toURI().toString());
                 filmPoster.setImage(img);
             }
         } catch (FileNotFoundException e) {
@@ -92,7 +91,7 @@ public class manageFilmsPageController {
         }
     }
 
-    public void addFilmButtonClicked(ActionEvent event) throws Exception {
+    public void addFilmButtonClicked() {
 
         if (filmNameBox.getLength() == 0 || (startDatePicker.getValue()) == null || (endDatePicker.getValue()) == null || (screeningBox1.getValue() == null) || (screeningBox2.getValue() == null) || (screeningBox3.getValue() == null) || (filmTrailerBox.getLength() == 0) || (selectedImage == null)) {
             clearErrors();
@@ -100,23 +99,39 @@ public class manageFilmsPageController {
 
 
         } else {
-            try{
-                copyPosterFile(selectedImage, Paths.get("src/main/resources/cbs/filmPosters/" + filmNameBox.getText() + "Poster.png"));
-            }catch(Exception e){
-                if(e instanceof FileAlreadyExistsException){
+            try {
+                copyPosterFile(selectedImage, Paths.get("src/main/resources/cbs/filmPosters/" + filmNameBox.getText() + "Poster.jpg"));
+            } catch (Exception e) {
+                if (e instanceof FileAlreadyExistsException) {
                     clearBoxes();
                     clearErrors();
                     filmExistsLabel.setVisible(true);
                     return;
                 }
             }
-            Main.films.add(new Film(filmNameBox.getText(), startDatePicker.getValue(), endDatePicker.getValue(), screeningBox1.getValue(), screeningBox2.getValue(), screeningBox3.getValue(), filmTrailerBox.getText(), filmDescriptionArea.getText(), filmNameBox.getText() + "Poster.png"));
+
+
+            try {
+                DatabaseHandler.addFilmRecord(filmNameBox.getText(), startDatePicker.getValue(), endDatePicker.getValue(), screeningBox1.getValue(), screeningBox2.getValue(), screeningBox3.getValue(), filmTrailerBox.getText(), filmDescriptionArea.getText(), filmNameBox.getText() + "Poster.png");
+                ResultSet rs = DatabaseHandler.queryData("SELECT filmID, filmName FROM tblFilms WHERE filmName = '" + filmNameBox.getText() + "'");
+                if (rs.next()) {
+                    filmID = rs.getInt(1);
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Error updating database. Please restart program", ButtonType.OK);
+                    alert.showAndWait();
+                }
+                Main.films.add(new Film(filmNameBox.getText(), startDatePicker.getValue(), endDatePicker.getValue(), screeningBox1.getValue(), screeningBox2.getValue(), screeningBox3.getValue(), filmTrailerBox.getText(), filmDescriptionArea.getText(), filmNameBox.getText() + "Poster.png", filmID));
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
             for (Film film : Main.films) {
                 System.out.println(film.toString());
             }
-            databaseHandler.addFilmRecord(filmNameBox.getText(), startDatePicker.getValue(), endDatePicker.getValue(), screeningBox1.getValue(), screeningBox2.getValue(), screeningBox3.getValue(), filmTrailerBox.getText(), filmDescriptionArea.getText(), filmNameBox.getText() + "Poster.png");
-            clearBoxes();
 
+            clearBoxes();
 
 
         }
@@ -127,12 +142,12 @@ public class manageFilmsPageController {
 
     }
 
-    public void clearErrors(){
+    public void clearErrors() {
         filmExistsLabel.setVisible(false);
         fieldsUnfilled.setVisible(true);
     }
 
-    public void clearBoxes(){
+    public void clearBoxes() {
         filmNameBox.clear();
         startDatePicker.getEditor().clear();
         endDatePicker.getEditor().clear();
