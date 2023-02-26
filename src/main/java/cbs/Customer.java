@@ -2,6 +2,8 @@ package cbs;
 
 public class Customer extends User {
 
+    //customer class that stores necessary customer data
+
     public Customer(String firstName, String lastName, String email, String password, boolean isEmployee, int ID) {
         super(firstName, lastName, email, password, isEmployee, ID);
     }

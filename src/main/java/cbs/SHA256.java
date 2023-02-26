@@ -6,6 +6,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class SHA256 {
+
+    //hashing method that takes a string as input and cryptographically hashes it
     public static byte[] getSHABytes(String input) throws NoSuchAlgorithmException{
 
         MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");

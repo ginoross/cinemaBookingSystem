@@ -1,5 +1,6 @@
 package cbs;
 
+//class that stores all necessary data about employees
 public class Employee extends User {
 
     public Employee(String firstName, String lastName, String email, String password, boolean isEmployee, int id) {

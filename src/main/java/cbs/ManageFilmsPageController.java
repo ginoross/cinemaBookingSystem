@@ -45,35 +45,29 @@ public class ManageFilmsPageController {
     @FXML
     TextArea filmDescriptionArea;
 
-
+    //initializes resources
     @FXML
     void initialize() {
-
         ObservableList<String> screeningTimes = FXCollections.observableArrayList("13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00");
         screeningBox1.setItems(screeningTimes);
         screeningBox2.setItems(screeningTimes);
         screeningBox3.setItems(screeningTimes);
-
         filmDescriptionArea.setPromptText("Movie description (optional)");
-
-
     }
 
 
     public void backButtonClicked() throws IOException {
-
         SceneCreator.createScene("employeeScene.fxml");
 
     }
 
     public void viewFilmsButtonClicked() throws IOException {
-
         SceneCreator.createScene("viewFilmsPage.fxml");
 
     }
 
+    //allows employee to select film poster and validates its format
     public void uploadImageClicked() throws IOException {
-
         try {
             FileChooser fc = new FileChooser();
             selectedImage = fc.showOpenDialog(null);
@@ -91,8 +85,8 @@ public class ManageFilmsPageController {
         }
     }
 
+    //validates that film can be created and creates it
     public void addFilmButtonClicked() {
-
         if (filmNameBox.getLength() == 0 || (startDatePicker.getValue()) == null || (endDatePicker.getValue()) == null || (screeningBox1.getValue() == null) || (screeningBox2.getValue() == null) || (screeningBox3.getValue() == null) || (filmTrailerBox.getLength() == 0) || (selectedImage == null)) {
             clearErrors();
             fieldsUnfilled.setVisible(true);
@@ -100,8 +94,12 @@ public class ManageFilmsPageController {
 
         } else {
             try {
+
+                //tries copying image
                 copyPosterFile(selectedImage, Paths.get("src/main/resources/cbs/filmPosters/" + filmNameBox.getText() + "Poster.jpg"));
             } catch (Exception e) {
+
+                //if image file already exists prompts user to add a film that is not already created
                 if (e instanceof FileAlreadyExistsException) {
                     clearBoxes();
                     clearErrors();
@@ -110,7 +108,7 @@ public class ManageFilmsPageController {
                 }
             }
 
-
+            //adds film to database
             try {
                 DatabaseHandler.addFilmRecord(filmNameBox.getText(), startDatePicker.getValue(), endDatePicker.getValue(), screeningBox1.getValue(), screeningBox2.getValue(), screeningBox3.getValue(), filmTrailerBox.getText(), filmDescriptionArea.getText(), filmNameBox.getText() + "Poster.png");
                 ResultSet rs = DatabaseHandler.queryData("SELECT filmID, filmName FROM tblFilms WHERE filmName = '" + filmNameBox.getText() + "'");
@@ -125,21 +123,13 @@ public class ManageFilmsPageController {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-
-            for (Film film : Main.films) {
-                System.out.println(film.toString());
-            }
-
             clearBoxes();
-
-
         }
     }
 
+    //copies file to filmPosters directory
     public void copyPosterFile(File poster, Path destination) throws IOException {
         Files.copy(poster.toPath(), destination);
-
     }
 
     public void clearErrors() {
@@ -147,6 +137,7 @@ public class ManageFilmsPageController {
         fieldsUnfilled.setVisible(true);
     }
 
+    //clears current data
     public void clearBoxes() {
         filmNameBox.clear();
         startDatePicker.getEditor().clear();

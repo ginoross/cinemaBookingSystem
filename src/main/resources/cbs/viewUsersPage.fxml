@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="450.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cbs.ViewUsersController">
+    <Button fx:id="backButton" layoutX="827.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonClicked" text="Back" />
+   <TableView fx:id="table" layoutX="107.0" layoutY="39.0" prefHeight="356.0" prefWidth="686.0">
+     <columns>
+         <TableColumn fx:id="ID" prefWidth="96.0" text="User ID" />
+         <TableColumn fx:id="firstName" prefWidth="144.0" text="First Name" />
+         <TableColumn fx:id="lastName" prefWidth="132.0" text="last Name" />
+         <TableColumn fx:id="email" prefWidth="206.0" text="Email" />
+         <TableColumn fx:id="isEmployee" prefWidth="107.0" text="Employee" />
+     </columns>
+   </TableView>
+    <Button fx:id="makeEmployeeButton" layoutX="108.0" layoutY="405.0" mnemonicParsing="false" onAction="#makeEmployee" prefHeight="31.0" prefWidth="686.0" text="Make User Employee" />
+
+</AnchorPane>

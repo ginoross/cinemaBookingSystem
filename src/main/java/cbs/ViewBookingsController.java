@@ -36,7 +36,7 @@ public class ViewBookingsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
+        //initializes the tableview
         setTableColumns();
         try (ResultSet rs = DatabaseHandler.queryData("SELECT * from tblBookings WHERE userID = '" + Main.currentUser.getID() + "'")) {
             while (rs.next()) {
@@ -51,8 +51,8 @@ public class ViewBookingsController implements Initializable {
     }
 
 
+    //sets up the table columns
     private void setTableColumns() {
-
         bookingID.setCellValueFactory(new PropertyValueFactory<>("bookingID"));
         filmID.setCellValueFactory(new PropertyValueFactory<>("filmID"));
         bookingDate.setCellValueFactory(new PropertyValueFactory<>("bookingDate"));
@@ -66,12 +66,14 @@ public class ViewBookingsController implements Initializable {
         SceneCreator.createScene("customerScene.fxml");
     }
 
+    //checks if the booking date is after the current date so you can cancel
     public boolean bookingCancellable() {
         LocalDate currentDate = LocalDate.now();
         LocalDate selectedDate = table.getSelectionModel().getSelectedItem().bookingDate;
         return selectedDate.isAfter(currentDate);
     }
 
+    //checks the booking is cancellable and shows errors dependent on the issues that arise
     public void cancelBooking() throws SQLException, IOException {
         if (table.getSelectionModel().getSelectedItem() != null) {
             if (!table.getSelectionModel().getSelectedItem().getIsCancelled()) {
@@ -88,6 +90,8 @@ public class ViewBookingsController implements Initializable {
         }
     }
 
+
+    //confirms cancellation and removes booking
     private void showConfirmationDialog() throws SQLException, IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to cancel this booking?", ButtonType.YES, ButtonType.NO);
         alert.showAndWait();
@@ -102,6 +106,7 @@ public class ViewBookingsController implements Initializable {
         }
     }
 
+    //method that displays alerts
     private void showWarningDialog(String message) {
         Alert alert = new Alert(Alert.AlertType.WARNING, message, ButtonType.OK);
         alert.showAndWait();

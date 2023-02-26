@@ -12,6 +12,7 @@ import java.util.Objects;
 
 public class Main extends Application {
 
+    //stores the global variables/arraylists that are required in other classes
     static Parent root;
     static Stage primaryStage;
     static Main m = null;
@@ -27,8 +28,10 @@ public class Main extends Application {
 
     public static void main(String[] args) throws Exception {
 
+        //initialize stage
         m = new Main();
 
+        //retrieve all required data
         retrieveEmployeeData();
         retrieveFilmData();
         retrieveBookingData();
@@ -37,6 +40,7 @@ public class Main extends Application {
 
     }
 
+    //fetches employee data from database
     static void retrieveEmployeeData() throws Exception {
         ResultSet rs = DatabaseHandler.queryData("Select * from tblUsers");
         while (rs.next()) {
@@ -48,6 +52,7 @@ public class Main extends Application {
         }
     }
 
+    //retrieve film data from database
     static void retrieveFilmData() throws Exception {
         ResultSet rs = DatabaseHandler.queryData("Select * from tblFilms");
         while (rs.next()) {
@@ -55,6 +60,7 @@ public class Main extends Application {
         }
     }
 
+    //retrieve booking data from database
     static void retrieveBookingData() throws Exception {
         ResultSet rs = DatabaseHandler.queryData("Select * from tblBookings");
         while (rs.next()) {
@@ -63,11 +69,13 @@ public class Main extends Application {
         }
     }
 
+    //sets the current user when user logs in
     static void setCurrentUser(User u) {
         Main.currentUser = u;
 
     }
 
+    //sets employee status
     static void setEmployeeMode(boolean employeeMode) {
         Main.employeeMode = employeeMode;
         System.out.println("Employee mode: " + Main.employeeMode);
@@ -89,7 +97,6 @@ public class Main extends Application {
         return primaryStage;
     }
 
-
     static HashSet<Employee> getEmployeeList() {
         return employees;
     }
@@ -98,6 +105,8 @@ public class Main extends Application {
         return customers;
     }
 
+
+    //fetches selected film object by its title
     static Film getSelectedFilm(String selectedFilmTitle) {
         for (Film film : films) {
             if (film.filmTitle.equals(selectedFilmTitle)) {
@@ -107,12 +116,12 @@ public class Main extends Application {
         return null;
     }
 
-
     static boolean getEmployeeMode() {
         return employeeMode;
     }
 
 
+    //start method to start stage
     @Override
     public void start(Stage primaryStage) {
         try {

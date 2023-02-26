@@ -15,6 +15,8 @@ public class EmployeeSceneController {
     @FXML
     Label employeeViewLabel;
 
+    //loads the requested page dependent on user button press
+
     public void logOutButtonClicked(ActionEvent event) throws IOException {
         Main.setCurrentUser(null);
         Main.setEmployeeMode(false);

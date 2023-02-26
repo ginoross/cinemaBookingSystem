@@ -30,11 +30,13 @@ public class ViewUsersController implements Initializable {
     private TableColumn<User, String> ID, firstName, lastName, email;
     @FXML
     private TableColumn<User, Boolean> isEmployee;
+    @FXML
+    private Button makeEmployeeButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
+        //initializes tableview
         setTableColumns();
         try (ResultSet rs = DatabaseHandler.queryData("SELECT * from tblUsers WHERE userID != '" + Main.currentUser.getID() + "'")) {
             while (rs.next()) {
@@ -48,9 +50,8 @@ public class ViewUsersController implements Initializable {
         table.getItems().addAll(observableUserList);
     }
 
-
+    //sets up the tableview columns
     private void setTableColumns() {
-
         ID.setCellValueFactory(new PropertyValueFactory<>("ID"));
         firstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         lastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
@@ -63,7 +64,8 @@ public class ViewUsersController implements Initializable {
         SceneCreator.createScene("employeeScene.fxml");
     }
 
-    public void cancelBooking() throws SQLException, IOException {
+    //method that checks if user can be made an employee and shows errors otherwise
+    public void makeEmployee() throws SQLException, IOException {
         if (table.getSelectionModel().getSelectedItem() != null) {
             if (!table.getSelectionModel().getSelectedItem().getIsEmployee()) {
                 showConfirmationDialog();
@@ -75,6 +77,7 @@ public class ViewUsersController implements Initializable {
         }
     }
 
+    //displays confirmation message and then makes user an employee
     private void showConfirmationDialog() throws SQLException, IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to Make this user an employee?", ButtonType.YES, ButtonType.NO);
         alert.showAndWait();
@@ -86,11 +89,12 @@ public class ViewUsersController implements Initializable {
                 }
             }
 
-
+            //reloads page so info is updated correctly
             SceneCreator.createScene("viewUsersPage.fxml");
         }
     }
 
+    //displays warning dialog
     private void showWarningDialog(String message) {
         Alert alert = new Alert(Alert.AlertType.WARNING, message, ButtonType.OK);
         alert.showAndWait();

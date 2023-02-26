@@ -5,8 +5,12 @@ import java.time.LocalDate;
 
 public class DatabaseHandler {
 
+    //class that handles all database operations
+
     private final static String DATABASE_URL = "jdbc:ucanaccess://src/main/resources/cbs/CBS.accdb";
 
+
+//returns requested result set based on input sql
     public static ResultSet queryData(String query) throws Exception {
         Connection con = DriverManager.getConnection(DATABASE_URL);
         Statement st = con.createStatement();
@@ -16,6 +20,7 @@ public class DatabaseHandler {
 
     }
 
+    //method to add a user record
     public static void addUserRecord(String firstName, String lastName, String email, String password) throws SQLException {
         Connection con = DriverManager.getConnection(DATABASE_URL);
         String update = "INSERT INTO tblUsers([firstName], [lastName], [email], [password]) VALUES (?,?,?,?)";
@@ -28,6 +33,7 @@ public class DatabaseHandler {
         con.close();
     }
 
+    //method to add a film record
     public static void addFilmRecord(String filmName, LocalDate startDate, LocalDate endDate, String screening1, String screening2, String screening3, String filmTrailer, String filmDescription, String filmPoster) throws SQLException {
         Connection con = DriverManager.getConnection(DATABASE_URL);
         String update = "INSERT INTO tblFilms([filmName], [startDate], [endDate], [screening1], [screening2], [screening3], [filmTrailer], [filmDescription], [filmPoster]) VALUES (?,?,?,?,?,?,?,?,?)";
@@ -46,6 +52,7 @@ public class DatabaseHandler {
 
     }
 
+    //method to add a booking record
     public static void addBookingRecord(int filmID, int userID, LocalDate bookingDate, String bookingTime, String bookingSeat) throws SQLException{
         Connection con = DriverManager.getConnection(DATABASE_URL);
         String update = "INSERT INTO tblBookings([filmID],[userID],[bookingDate],[bookingTime],[bookingSeat]) VALUES (?,?,?,?,?)";
@@ -57,9 +64,9 @@ public class DatabaseHandler {
         st.setString(5, bookingSeat);
         st.executeUpdate();
         con.close();
-
     }
 
+    //method that updates database to cancel a booking
     public static void cancelBooking(int bookingID) throws SQLException{
         Connection con = DriverManager.getConnection(DATABASE_URL);
         String update = "UPDATE tblBookings SET isCancelled=? WHERE bookingID = "+bookingID;
@@ -70,6 +77,7 @@ public class DatabaseHandler {
         System.out.println("success");
     }
 
+    //method that updates a database to make a user an employee
     public static void makeEmployee(int userID) throws SQLException{
         Connection con = DriverManager.getConnection(DATABASE_URL);
         String update = "UPDATE tblUsers SET isEmployee=? WHERE userID = "+userID;
@@ -80,6 +88,7 @@ public class DatabaseHandler {
         System.out.println("success");
     }
 
+    //method to delete a specified film record
     public static void deleteFilmRecord(int filmID) throws Exception {
         Connection con = DriverManager.getConnection(DATABASE_URL);
         String delete = "DELETE From tblFilms WHERE tblFilms.filmID = " + filmID;

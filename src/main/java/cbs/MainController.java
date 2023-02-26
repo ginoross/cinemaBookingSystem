@@ -24,14 +24,19 @@ public class MainController {
     @FXML
     Label failedLogin, signIn, registerHere, fieldsUnfilled;
 
+    //method that logs in user
     @FXML
     public void loginButtonClicked(ActionEvent event) throws IOException, NoSuchAlgorithmException {
+
+        //fetches all valid users
         ArrayList<User> users = new ArrayList<User>();
         users.addAll(Main.getCustomerList());
         users.addAll(Main.getEmployeeList());
 
         boolean loggedIn = false;
         for (User u : users) {
+
+            //checks input data & checks if hashed password matches
             if (emailBox.getText().equals(u.getEmail()) && SHA256.toHexString(SHA256.getSHABytes(passwordBox.getText())).equals(u.getPassword())) {
                 System.out.println("login success");
                 loggedIn = true;
@@ -39,6 +44,8 @@ public class MainController {
 
                 Main.setCurrentUser(u);
                 Main.setEmployeeMode(u.getIsEmployee());
+
+                //sets correct type of scene based on employee status
                 if (Main.getEmployeeMode()) {
                     SceneCreator.createScene("employeeScene.fxml");
                 } else {

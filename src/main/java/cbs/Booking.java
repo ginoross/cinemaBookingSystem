@@ -2,6 +2,8 @@ package cbs;
 
 import java.time.LocalDate;
 
+//booking class that stores all necessary booking data
+
 public class Booking {
 
     protected int BookingID;
@@ -21,52 +23,8 @@ public class Booking {
         this.isCancelled = isCancelled;
     }
 
-    public int getBookingID() {
-        return BookingID;
-    }
-
-    public void setBookingID(int bookingID) {
-        BookingID = bookingID;
-    }
-
-    public int getFilmID() {
-        return FilmID;
-    }
-
-    public void setFilmID(int filmID) {
-        FilmID = filmID;
-    }
-
-    public int getUserID() {
-        return UserID;
-    }
-
-    public void setUserID(int userID) {
-        UserID = userID;
-    }
-
-    public LocalDate getBookingDate() {
-        return bookingDate;
-    }
-
-    public void setBookingDate(LocalDate bookingDate) {
-        this.bookingDate = bookingDate;
-    }
-
-    public String getBookingTime() {
-        return bookingTime;
-    }
-
-    public void setBookingTime(String bookingTime) {
-        this.bookingTime = bookingTime;
-    }
-
     public String getBookingSeat() {
         return bookingSeat;
-    }
-
-    public void setBookingSeat(String bookingSeat) {
-        this.bookingSeat = bookingSeat;
     }
 
     public boolean getIsCancelled() {

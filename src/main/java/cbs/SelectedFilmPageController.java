@@ -44,6 +44,8 @@ public class SelectedFilmPageController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        //loads the selected film data
         selectedFilm = Main.getSelectedFilm(Main.selectedFilmTitle);
         filmPoster = new File(String.format(POSTER_PATH_FORMAT, Main.selectedFilmTitle));
         Image img = new Image(filmPoster.toURI().toString());
@@ -60,6 +62,8 @@ public class SelectedFilmPageController implements Initializable {
                 ex.printStackTrace();
             }
         });
+
+        //depending on the users access levels displays different options
         screeningTimesLabel.setText("Screening times: " + selectedFilm.screening1 + ", " + selectedFilm.screening2 + ", " + selectedFilm.screening3);
         if (Main.getEmployeeMode()) {
             deleteFilmButton.setVisible(true);
@@ -68,6 +72,7 @@ public class SelectedFilmPageController implements Initializable {
         }
     }
 
+    //method that removes a film from the database and updates the listings
     public void deleteFilm() {
         try {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this film?", ButtonType.YES, ButtonType.NO);
@@ -91,6 +96,7 @@ public class SelectedFilmPageController implements Initializable {
         }
     }
 
+    //method to open links for the trailers
     public void openLink(String URL) throws IOException {
         Desktop desk = Desktop.getDesktop();
         desk.browse(URI.create(URL));

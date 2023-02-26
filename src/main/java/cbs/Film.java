@@ -1,8 +1,9 @@
 package cbs;
 
 import java.time.LocalDate;
-import java.util.Date;
 
+
+//class that stores all necessary film data
 public class Film {
 
     protected String filmTitle;
@@ -28,80 +29,20 @@ public class Film {
         return filmTitle;
     }
 
-    public void setFilmTitle(String filmTitle) {
-        this.filmTitle = filmTitle;
-    }
-
     public LocalDate getStartDate() {
         return startDate;
-    }
-
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
     }
 
     public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
-
-    public String getScreening1() {
-        return screening1;
-    }
-
-    public void setScreening1(String screening1) {
-        this.screening1 = screening1;
-    }
-
-    public String getScreening2() {
-        return screening2;
-    }
-
-    public void setScreening2(String screening2) {
-        this.screening2 = screening2;
-    }
-
-    public String getScreening3() {
-        return screening3;
-    }
-
-    public void setScreening3(String screening3) {
-        this.screening3 = screening3;
-    }
-
     public String getFilmTrailer() {
         return filmTrailer;
     }
 
-    public void setFilmTrailer(String filmTrailer) {
-        this.filmTrailer = filmTrailer;
-    }
-
-    public String getFilmDescription() {
-        return filmDescription;
-    }
-
-    public void setFilmDescription(String filmDescription) {
-        this.filmDescription = filmDescription;
-    }
-
     public String getFilmPoster() {
         return filmPoster;
-    }
-
-    public void setFilmPoster(String filmPoster) {
-        this.filmPoster = filmPoster;
-    }
-
-    public int getFilmIndex() {
-        return filmIndex;
-    }
-
-    public void setFilmIndex(String filmIndex) {
-        this.filmPoster = filmIndex;
     }
 
     @Override
