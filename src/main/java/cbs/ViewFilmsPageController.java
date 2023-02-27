@@ -134,7 +134,12 @@ public class ViewFilmsPageController implements Initializable {
 
     public void backButtonClicked() throws IOException {
 
-        SceneCreator.createScene("manageFilmsPage.fxml");
+        if(Main.currentUser.isEmployee){
+            SceneCreator.createScene("manageFilmsPage.fxml");
+        }else{
+            SceneCreator.createScene("customerScene.fxml");
+        }
+
 
     }
 }

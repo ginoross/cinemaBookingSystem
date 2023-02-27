@@ -23,6 +23,54 @@ public class Booking {
         this.isCancelled = isCancelled;
     }
 
+    public int getBookingID() {
+        return BookingID;
+    }
+
+    public void setBookingID(int bookingID) {
+        BookingID = bookingID;
+    }
+
+    public int getFilmID() {
+        return FilmID;
+    }
+
+    public void setFilmID(int filmID) {
+        FilmID = filmID;
+    }
+
+    public int getUserID() {
+        return UserID;
+    }
+
+    public void setUserID(int userID) {
+        UserID = userID;
+    }
+
+    public LocalDate getBookingDate() {
+        return bookingDate;
+    }
+
+    public void setBookingDate(LocalDate bookingDate) {
+        this.bookingDate = bookingDate;
+    }
+
+    public String getBookingTime() {
+        return bookingTime;
+    }
+
+    public void setBookingTime(String bookingTime) {
+        this.bookingTime = bookingTime;
+    }
+
+    public void setBookingSeat(String bookingSeat) {
+        this.bookingSeat = bookingSeat;
+    }
+
+    public boolean isCancelled() {
+        return isCancelled;
+    }
+
     public String getBookingSeat() {
         return bookingSeat;
     }

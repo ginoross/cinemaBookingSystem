@@ -33,6 +33,17 @@ public class DatabaseHandler {
         con.close();
     }
 
+    //method that updates database to cancel a booking
+    public static void cancelBooking(int bookingID) throws SQLException{
+        Connection con = DriverManager.getConnection(DATABASE_URL);
+        String update = "UPDATE tblBookings SET isCancelled=? WHERE bookingID = "+bookingID;
+        PreparedStatement st = con.prepareStatement(update);
+        st.setBoolean(1, true);
+        st.executeUpdate();
+        con.close();
+        System.out.println("success");
+    }
+
     //method to add a film record
     public static void addFilmRecord(String filmName, LocalDate startDate, LocalDate endDate, String screening1, String screening2, String screening3, String filmTrailer, String filmDescription, String filmPoster) throws SQLException {
         Connection con = DriverManager.getConnection(DATABASE_URL);
@@ -66,16 +77,7 @@ public class DatabaseHandler {
         con.close();
     }
 
-    //method that updates database to cancel a booking
-    public static void cancelBooking(int bookingID) throws SQLException{
-        Connection con = DriverManager.getConnection(DATABASE_URL);
-        String update = "UPDATE tblBookings SET isCancelled=? WHERE bookingID = "+bookingID;
-        PreparedStatement st = con.prepareStatement(update);
-        st.setBoolean(1, true);
-        st.executeUpdate();
-        con.close();
-        System.out.println("success");
-    }
+
 
     //method that updates a database to make a user an employee
     public static void makeEmployee(int userID) throws SQLException{

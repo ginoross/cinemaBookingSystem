@@ -40,7 +40,7 @@ public class ViewBookingsController implements Initializable {
         setTableColumns();
         try (ResultSet rs = DatabaseHandler.queryData("SELECT * from tblBookings WHERE userID = '" + Main.currentUser.getID() + "'")) {
             while (rs.next()) {
-                customerBookingList.add(new Booking(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getDate(4).toLocalDate(), rs.getString(7), rs.getString(5), rs.getBoolean(6)));
+                customerBookingList.add(new Booking(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getDate(4).toLocalDate(), rs.getString(5), rs.getString(6), rs.getBoolean(7)));
             }
         } catch (Exception e) {
             e.printStackTrace();

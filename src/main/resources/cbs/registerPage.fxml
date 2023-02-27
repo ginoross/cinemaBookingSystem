@@ -26,6 +26,6 @@
       <Label fx:id="passwordsUnmatched" layoutX="317.0" layoutY="364.0" text="Password and confirm password do not match" textFill="RED" visible="false" />
       <Button fx:id="backToLogin" layoutX="25.0" layoutY="29.0" mnemonicParsing="false" onAction="#loadLoginPage" text="Back to Login" />
       <Label fx:id="registeredLabel" layoutX="317.0" layoutY="313.0" prefHeight="17.0" prefWidth="376.0" text="Registered successfully! Please return to the login page and sign in" textFill="#1a8a04" visible="false" />
-      <Label fx:id="invalidEmailFormat" layoutX="303.0" layoutY="364.0" prefHeight="17.0" prefWidth="551.0" text="Please make sure your email is in a valid format (must contain @ and .com)" textFill="RED" visible="false" />
+      <Label fx:id="invalidEmailFormat" layoutX="303.0" layoutY="364.0" prefHeight="17.0" prefWidth="551.0" text="Email is duplicate or invalid format" textFill="RED" visible="false" />
    </children>
 </AnchorPane>

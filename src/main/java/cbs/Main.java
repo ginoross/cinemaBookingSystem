@@ -64,8 +64,7 @@ public class Main extends Application {
     static void retrieveBookingData() throws Exception {
         ResultSet rs = DatabaseHandler.queryData("Select * from tblBookings");
         while (rs.next()) {
-            System.out.println(rs.getString(5) + rs.getString(6) + rs.getString(7));
-            Main.bookings.add(new Booking(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getDate(4).toLocalDate(), rs.getString(7), rs.getString(5), rs.getBoolean(6)));
+            Main.bookings.add(new Booking(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getDate(4).toLocalDate(), rs.getString(5), rs.getString(6), rs.getBoolean(7)));
         }
     }
 
