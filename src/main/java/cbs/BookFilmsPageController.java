@@ -79,7 +79,7 @@ public class BookFilmsPageController implements Initializable {
         bookingDatePicker.setDayCellFactory(datePicker -> new DateCell() {
             public void updateItem(LocalDate date, boolean empty) {
                 super.updateItem(date, empty);
-                setDisable(empty || date.compareTo(selectedFilm.getStartDate()) < 0 || date.compareTo(selectedFilm.getEndDate()) > 0);
+                setDisable(empty || date.isBefore(selectedFilm.getStartDate()) || date.isAfter(selectedFilm.getEndDate()));
             }
         });
     }
